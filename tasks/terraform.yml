@@ -1,0 +1,63 @@
+---
+
+- name: terraform - create directory
+  file:
+    state=directory
+    path={{ provision_terraform_dir }}
+    owner={{ provision_user }}
+    group={{ provision_group }}
+
+- name: terraform - checkout latest public
+  sudo_user: "{{ provision_user }}"
+  git:
+    repo={{ provision_terraform_repo_url }}
+    version={{ provision_terraform_repo_version }}
+    depth=1
+    update=yes
+    accept_hostkey=yes
+    dest={{ provision_terraform_dir }}
+    force=yes
+    recursive=yes
+  when: "{{ provision_terraform_repo_keyfile|length == 0 }}"
+
+- name: terraform - checkout latest private
+  sudo_user: "{{ provision_user }}"
+  git:
+    repo={{ provision_terraform_repo_url }}
+    version={{ provision_terraform_repo_version }}
+    depth=1
+    update=yes
+    accept_hostkey=yes
+    dest={{ provision_terraform_dir }}
+    force=yes
+    recursive=yes
+    key_file=~/.ssh/provision/{{ provision_terraform_repo_keyfile }}
+  when: "{{ provision_terraform_repo_keyfile|length > 0 }}"
+
+- name: terraform - private vars
+  template:
+    src=terraform/terraform.tfvars.j2
+    dest={{ provision_terraform_dir }}/terraform.tfvars
+    owner={{ provision_user }}
+    group={{ provision_group }}
+
+- name: terraform - private vars
+  template:
+    src=terraform/{{ item }}.j2
+    dest={{ provision_terraform_dir }}/{{ item }}
+    owner={{ provision_user }}
+    group={{ provision_group }}
+    mode=750
+  with_items:
+    - apply
+    - plan
+    - destroy
+
+- name: terraform - permissions
+  file:
+    path=/etc/terraform
+    owner={{ provision_user }}
+    group={{ provision_group }}
+    mode=0750
+
+

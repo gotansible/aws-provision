@@ -1,0 +1,58 @@
+---
+
+aws_access_key: ''
+aws_secret_key: ''
+aws_account_id: ''
+aws_region: ''
+
+provision_state_bucket: ''
+provision_state_file: ''
+provision_vpc_id: ''
+provision_vpc_name: ''
+
+provision_keypair_name: ''
+provision_private_key: '~/.ssh/current'
+
+provision_keys: []
+
+provision_user: provision
+provision_group: provision
+
+#### Folder Setup #######
+provision_config_dir: /etc/ansible
+provision_inventory_dir: "{{ provision_config_dir }}/inventory"
+provision_inventory_current_dir: "{{ provision_inventory_dir }}/current"
+provision_playbook_dir: "{{ provision_config_dir }}/playbook"
+provision_playbook_repo_url: "https://github.com/gotansible/basics"
+provision_playbook_repo_version: HEAD
+provision_playbook_repo_keyfile: ''
+
+provision_inventory_all_filters:
+  - "tag:managed_by=ansible"
+  #- "vpc-id=blahblah"
+
+provision_inventory_stage_filters: []
+provision_inventory_prod_filters: []
+provision_inventory_demo_filters: []
+
+provision_environment_default: prod
+
+# these expect a corresponding ec2.ini_{{env}}.j2 file
+provision_environments:
+  - prod
+  - stage
+  - demo
+
+####### Terraform ########
+
+provision_terraform_dir: /etc/terraform
+provision_terraform_repo_url: "https://github.com/kraveio/bootstrap"
+provision_terraform_repo_version: HEAD
+provision_terraform_repo_keyfile: ''
+
+####### GENESIS TF
+provision_vpc_zone: a
+provision_vpc_zone_alt: b
+provision_aws_vpc_name: ""
+provision_jump_access_cidr: "65.200.54.234/32"
+

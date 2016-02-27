@@ -1,0 +1,20 @@
+---
+
+- name: dependencies
+  include: depend.yml
+
+- name: user account
+  include: user.yml
+
+- name: setup dynamic inventory
+  include: inventory.yml
+
+- name: copy keys
+  include: keys.yml
+
+- name: get latest playbook
+  include: playbook.yml
+
+- name: get latest terraform
+  include: terraform.yml
+

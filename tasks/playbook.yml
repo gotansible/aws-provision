@@ -1,0 +1,43 @@
+---
+
+- name: playbook - create directory
+  file:
+    state=directory
+    path={{ provision_playbook_dir }}
+    owner={{ provision_user }}
+    group={{ provision_group }}
+
+- name: playbook - checkout latest public
+  sudo_user: "{{ provision_user }}"
+  git:
+    repo={{ provision_playbook_repo_url }}
+    version={{ provision_playbook_repo_version }}
+    depth=1
+    update=yes
+    accept_hostkey=yes
+    dest={{ provision_playbook_dir }}
+    force=yes
+    recursive=yes
+  when: "{{ provision_playbook_repo_keyfile|length == 0 }}"
+
+- name: playbook - checkout latest private
+  sudo_user: "{{ provision_user }}"
+  git:
+    repo={{ provision_playbook_repo_url }}
+    version={{ provision_playbook_repo_version }}
+    depth=1
+    update=yes
+    accept_hostkey=yes
+    dest={{ provision_playbook_dir }}
+    force=yes
+    recursive=yes
+    key_file=~/.ssh/provision/{{ provision_playbook_repo_keyfile }}
+  when: "{{ provision_playbook_repo_keyfile|length > 0 }}"
+
+- name: playbook - permissions
+  file:
+    path=/etc/ansible
+    owner={{ provision_user }}
+    group={{ provision_group }}
+
+

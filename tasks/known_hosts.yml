@@ -1,0 +1,22 @@
+---
+
+- name: known_hosts - ensure known_hosts file exists
+  sudo_user: "{{ provision_user }}"
+  file:
+    state=touch
+    path=~/.ssh/known_hosts
+    owner={{ provision_user }}
+    group={{ provision_group }}
+
+- name: known_hosts - get github.com RSA signature
+  sudo_user: "{{ provision_user }}"
+  shell: ssh-keyscan -H github.com
+  register: gh
+
+- name: known_hosts - register github.com signature
+  sudo_user: "{{ provision_user }}"
+  lineinfile: 
+    line={{gh.stdout}}
+    dest=~/.ssh/known_hosts
+    owner={{ provision_user }}
+    group={{ provision_group }}
