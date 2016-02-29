@@ -1,9 +1,12 @@
 ---
 
-aws_access_key: ''
-aws_secret_key: ''
-aws_account_id: ''
-aws_region: ''
+provision_aws_access_key: ''
+provision_aws_secret_key: ''
+provision_aws_account_id: ''
+provision_aws_region: ''
+
+provision_aws_zone: ''
+provision_aws_zone_alt: ''
 
 provision_state_bucket: ''
 provision_state_file: ''
@@ -46,7 +49,7 @@ provision_environments:
 ####### Terraform ########
 
 provision_terraform_dir: /etc/terraform
-provision_terraform_repo_url: "https://github.com/kraveio/bootstrap"
+provision_terraform_repo_url: "https://github.com/user/bootstrap"
 provision_terraform_repo_version: HEAD
 provision_terraform_repo_keyfile: ''
 

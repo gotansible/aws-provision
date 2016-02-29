@@ -1,12 +1,12 @@
 # this will be the tfvars file on the provisioning server
 
-aws_access_key = "{{ aws_access_key }}"
-aws_secret_key = "{{ aws_secret_key }}"
-aws_account_id = "{{ aws_account_id }}"
-aws_region = "{{ aws_region }}"
+aws_access_key = "{{ provision_aws_access_key }}"
+aws_secret_key = "{{ provision_aws_secret_key }}"
+aws_account_id = "{{ provision_aws_account_id }}"
+aws_region = "{{ provision_aws_region }}"
 
-vpc_zone = "{{ aws_zone }}"
-vpc_zone_alt = "{{ aws_zone_alt }}"
+vpc_zone = "{{ provision_aws_zone }}"
+vpc_zone_alt = "{{ provision_aws_zone_alt }}"
 
 aws_vpc_name = "{{ provision_vpc_name }}"
 
