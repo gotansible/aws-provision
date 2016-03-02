@@ -1,12 +1,13 @@
 provision
 =========
 
-A brief description of provision goes here.
+Sets up a provisioning server that runs ansible and terraform.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires ~/.aws/credentials to be setup separately for boto which is what terraform uses.
+This role also requires ssh keys to be copied seperately.
 
 Role Variables
 --------------

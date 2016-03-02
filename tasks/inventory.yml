@@ -1,13 +1,5 @@
 ---
 
-- name: inventory - boto.cfg
-  template:
-    src=boto.cfg.j2
-    dest=/etc/boto.cfg
-    mode=750
-    owner={{ provision_user }}
-    group={{ provision_group }}
-
 - name: inventory - config directories
   file:
     state=directory

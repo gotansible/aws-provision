@@ -2,15 +2,11 @@
 - hosts: all
   sudo: true
   vars:
-    provision_aws_access_key: blahblah_access_key
-    provision_aws_secret_key: blahblah_secret_key
-    provision_aws_account_id: blahblah_account_id
-    provision_aws_region: us-west-2
-
     provision_vpc_id: ""
 
   roles:
     - role: provision
+      provision_aws_region: us-west-2
       provision_vpc_name: "demo"
       provision_state_bucket: "state.provision.example.com"
       provision_state_file: "genesis.tfstate"

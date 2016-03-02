@@ -2,8 +2,6 @@
 
 set -e
 
-export AWS_ACCESS_KEY_ID="{{ provision_aws_access_key }}"
-export AWS_SECRET_ACCESS_KEY="{{ provision_aws_secret_key }}"
 export AWS_DEFAULT_REGION="{{ provision_aws_region }}"
 
 if [ "$#" -ne 1 ]
