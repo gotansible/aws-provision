@@ -34,7 +34,7 @@
     key_file=~/.ssh/provision/{{ provision_terraform_repo_keyfile }}
   when: "{{ provision_terraform_repo_keyfile|length > 0 }}"
 
-- name: terraform - copy genesis.tfvars
+- name: terraform - copy terraform.tfvars
   copy:
     src={{ provision_terraform_tfvar_file }}
     dest={{ provision_terraform_dir }}/terraform.tfvars
