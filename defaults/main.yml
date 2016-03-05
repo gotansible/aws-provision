@@ -14,7 +14,6 @@ provision_keypair_name: ''
 provision_private_key: '~/.ssh/current'
 
 provision_keys: []
-
 provision_user: provision
 provision_group: provision
 
@@ -49,6 +48,7 @@ provision_terraform_dir: /etc/terraform
 provision_terraform_repo_url: "https://github.com/user/bootstrap"
 provision_terraform_repo_version: HEAD
 provision_terraform_repo_keyfile: ''
+provision_terraform_tfvar_file: ''
 
 ####### GENESIS TF
 provision_vpc_zone: a
