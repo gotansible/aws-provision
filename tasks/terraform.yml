@@ -42,7 +42,7 @@
     group={{ provision_group }}
   when: provision_terraform_tfvar_file|length > 0
 
-- name: terraform - run scripts: apply, plan, destroy
+- name: terraform - run scripts apply plan destroy
   template:
     src=terraform/{{ item }}.j2
     dest={{ provision_terraform_dir }}/{{ item }}

@@ -9,9 +9,9 @@
 - name: setup dynamic inventory
   include: inventory.yml
 
-- name: get latest playbook
+- name: setup playbook
   include: playbook.yml
 
-- name: get latest terraform
+- name: setup terraform
   include: terraform.yml
 
