@@ -13,4 +13,4 @@ fi
 cd $1
 
 terraform get -update
-terraform plan --module-depth=-1 -var-file=../terraform.tfvars
+terraform plan --module-depth=-1 -var-file=./terraform.tfvars -var-file=../terraform.tfvars
