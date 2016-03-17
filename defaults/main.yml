@@ -13,7 +13,6 @@ provision_vpc_name: ''
 provision_keypair_name: ''
 provision_private_key: '~/.ssh/current'
 
-provision_keys: []
 provision_user: provision
 provision_group: provision
 

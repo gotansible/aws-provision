@@ -9,8 +9,8 @@
 - name: setup dynamic inventory
   include: inventory.yml
 
-- name: setup playbook
-  include: playbook.yml
+- name: setup ansible
+  include: ansible.yml
 
 - name: setup terraform
   include: terraform.yml

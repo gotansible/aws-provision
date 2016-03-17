@@ -20,6 +20,4 @@
       provision_terraform_repo_url: "ssh://git@github.com/useraccount/provision"
       provision_terraform_repo_keyfile: "testkey"
       provision_terraform_repo_version: "master"
-      provision_keys:
-        - testkey
 
