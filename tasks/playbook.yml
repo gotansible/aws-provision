@@ -37,7 +37,9 @@
 - name: playbook - permissions
   file:
     path=/etc/ansible
+    state=directory
     owner={{ provision_user }}
     group={{ provision_group }}
+    recurse=true
 
 
