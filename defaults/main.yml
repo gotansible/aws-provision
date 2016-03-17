@@ -19,7 +19,7 @@ provision_group: provision
 #### Folder Setup #######
 provision_config_dir: /etc/ansible
 provision_inventory_dir: "{{ provision_config_dir }}/inventory"
-provision_inventory_current_dir: "{{ provision_inventory_dir }}/current"
+#provision_inventory_current_dir: "{{ provision_inventory_dir }}/current"
 provision_playbook_dir: "{{ provision_config_dir }}/playbook"
 provision_playbook_repo_url: "https://github.com/gotansible/basics"
 provision_playbook_repo_version: HEAD
@@ -29,17 +29,11 @@ provision_inventory_all_filters:
   - "tag:managed_by=ansible"
   #- "vpc-id=blahblah"
 
-provision_inventory_stage_filters: []
-provision_inventory_prod_filters: []
-provision_inventory_demo_filters: []
-
-provision_environment_default: prod
+provision_environment_default: default
 
 # these expect a corresponding ec2.ini_{{env}}.j2 file
 provision_environments:
-  - prod
-  - stage
-  - demo
+  - default
 
 ####### Terraform ########
 

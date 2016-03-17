@@ -101,6 +101,7 @@ group_by_rds_parameter_group = True
 # a list separated by commas. See examples below.
 
 {% if provision_inventory_all_filters|length > 0 %}
-instance_filters = {{ provision_inventory_all_filters|union(provision_inventory_prod_filters)|join(',') }}
+instance_filters = {{ provision_inventory_all_filters|join(',') }}
 {% endif %}
+
 

@@ -9,14 +9,6 @@
     group={{ provision_group }}
   with_items: "{{ provision_environments }}"
 
-- name: inventory - config directories
-  file:
-    state=directory
-    path={{ provision_inventory_current_dir }}
-    mode=0755
-    owner={{ provision_user }}
-    group={{ provision_group }}
-
 - name: inventory - ec2.ini
   template:
     src=ec2.ini_{{ item }}.j2
@@ -35,29 +27,20 @@
     group={{ provision_group }}
   with_items: "{{ provision_environments }}"
 
-- name: inventory - setup default hosts
+- name: inventory - make default environment hosts active
   file:
     state=link
-    dest={{ provision_inventory_current_dir }}/hosts
+    dest={{ provision_config_dir }}/hosts
     src={{ provision_inventory_dir }}/{{ provision_environment_default }}/hosts
     force=yes
     owner={{ provision_user }}
     group={{ provision_group }}
 
-- name: inventory - setup default ec2.ini
+- name: inventory - make default environment ec2.ini active
   file:
     state=link
-    dest={{ provision_inventory_current_dir }}/ec2.ini
+    dest={{ provision_config_dir }}/ec2.ini
     src={{ provision_inventory_dir }}/{{ provision_environment_default }}/ec2.ini
-    force=yes
-    owner={{ provision_user }}
-    group={{ provision_group }}
-
-- name: inventory - make current directory the default hosts
-  file:
-    state=link
-    dest={{ provision_config_dir }}/hosts
-    src={{ provision_inventory_current_dir }}/
     force=yes
     owner={{ provision_user }}
     group={{ provision_group }}

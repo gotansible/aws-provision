@@ -5,7 +5,7 @@
     provision_vpc_id: ""
 
   roles:
-    - role: provision
+    - role: aws-provision
       provision_aws_region: us-west-2
       provision_vpc_name: "demo"
       provision_state_bucket: "state.provision.example.com"
